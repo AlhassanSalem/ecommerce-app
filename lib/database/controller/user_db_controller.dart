@@ -8,30 +8,36 @@ class UserDbController {
 
   final database = DbController().database;
 
-  Future<ProcessResponse> login(String email, String password) async{
+  Future<ProcessResponse> login(String email, String password) async {
     List<Map<String, dynamic>> rowsMap = await database.query(
-      User.tableName,
-      where: 'email = ? AND password = ?',
-      whereArgs: [email,password]
+        User.tableName,
+        where: 'email = ? AND password = ?',
+        whereArgs: [email, password]
     );
 
-    if(rowsMap.isNotEmpty) {
+    if (rowsMap.isNotEmpty) {
       User user = User.fromMap(rowsMap.first);
       SharedPrefController().save(user);
-      return const ProcessResponse(message: 'Logged in Successfully', success: true);
+      return const ProcessResponse(
+          message: 'Logged in Successfully', success: true);
     }
-    return const ProcessResponse(message: 'Credential error, check and try again!',success: false);
+    return const ProcessResponse(
+        message: 'Credential error, check and try again!', success: false);
   }
 
-  void register(User user) async{
-    if(await _isEmailExist(email: user.email)){
+  Future<ProcessResponse> register(User user) async {
+    if (await _isEmailExist(email: user.email)) {
       int newRowId = await database.insert(User.tableName, user.toMap(),);
+      return ProcessResponse(message: newRowId != 0
+          ? 'Registered Successfully'
+          : 'Registered Failed', success: newRowId != 0);
     }
-
+    return const ProcessResponse(message: 'Email exist, user anther', success: false);
   }
 
-  Future<bool> _isEmailExist({required String email}) async{
-    List<Map<String,dynamic>> rowsMap = await database.query(User.tableName, where: 'email = ?', whereArgs: [email]);
+  Future<bool> _isEmailExist({required String email}) async {
+    List<Map<String, dynamic>> rowsMap = await database.query(
+        User.tableName, where: 'email = ?', whereArgs: [email]);
 
     return rowsMap.isEmpty;
   }
