@@ -8,6 +8,8 @@ class Cart {
 
   static const String tableName = 'cart';
 
+  Cart();
+
   /// READ ROW DATA FROM DATABASE TABLE
   Cart.fromMap(Map<String,dynamic> rowMap) {
     id = rowMap['id'];
