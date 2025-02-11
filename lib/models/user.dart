@@ -3,7 +3,7 @@ class User {
   late String name;
   late String email;
   late String password;
-
+  static const String tableName = 'users';
   User();
 
   /// READ ROW DATA FROM DATABASE TABLE
