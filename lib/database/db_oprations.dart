@@ -1,4 +1,4 @@
-abstract class DbController<Model>{
+abstract class DbOperation<Model>{
   //CRUD : CREATE , READ, UPDATE, DELETE
 
   Future<int> create(Model model);
