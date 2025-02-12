@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
+import 'package:ecommerce_app/view/auth/login_view.dart';
+import 'package:ecommerce_app/view/auth/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375,812),
+      minTextAdapt: true,
       builder: (context, child) {
         return MultiProvider(
           providers: [
@@ -25,10 +28,12 @@ class MyApp extends StatelessWidget {
             )
           ],
           child: MaterialApp(
-            initialRoute: '/splash_view',
+            initialRoute: '/login_view',
             routes: {
               '/splash_view': (context) => const SplashView(),
               '/splash_view_body': (context) => const SplashViewBody(),
+              '/login_view': (context) => const LoginView(),
+              '/login_view_body': (context) => const LoginViewBody(),
             },
           ),
         );
