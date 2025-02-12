@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatefulWidget {
