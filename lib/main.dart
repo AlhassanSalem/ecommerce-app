@@ -2,7 +2,9 @@ import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/database/DbController.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
+import 'package:ecommerce_app/view/app/home_view.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
+import 'package:ecommerce_app/view/app/widgets/home_view_body.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
 import 'package:ecommerce_app/view/auth/login_view.dart';
 import 'package:ecommerce_app/view/auth/register_view.dart';
@@ -88,6 +90,8 @@ class MyApp extends StatelessWidget {
               '/login_view_body': (context) => const LoginViewBody(),
               '/register_view': (context) => const RegisterView(),
               '/register_view_body': (context) => const RegisterViewBody(),
+              '/home_view': (context) => const HomeView(),
+              '/home_view_body': (context) => const HomeViewBody(),
             },
           ),
         );
