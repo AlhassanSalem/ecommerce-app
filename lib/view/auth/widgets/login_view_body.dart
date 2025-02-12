@@ -22,7 +22,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               'Welcome Back...',
               style: Styles.textStyle18,
             ),
-            Text('Please Enter email and password...'),
+            Text('Please Enter email and password...', ),
           ],
         ),
       ),
