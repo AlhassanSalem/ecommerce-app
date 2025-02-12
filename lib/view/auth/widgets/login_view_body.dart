@@ -1,7 +1,8 @@
+import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -19,7 +20,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
-
   }
 
   @override
@@ -28,7 +28,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     _passwordController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -55,33 +54,54 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             SizedBox(
               height: 16.h,
             ),
-            TextFieldApp(emailController: _emailController, textInputType: TextInputType.emailAddress,),
+            TextFieldApp(
+              emailController: _emailController,
+              lableText: 'Email',
+              hintText: 'Enter Your Email',
+              prefix: Icons.email,
+              textInputType: TextInputType.emailAddress,
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            TextFieldApp(
+              emailController: _passwordController,
+              lableText: 'Password',
+              hintText: 'Enter password',
+              prefix: Icons.lock,
+            ),
+            SizedBox(
+              height: 16.sp,
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'LOGIN',
+                style: Styles.textStyle14.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don\'t have an account?',
+                  style: Styles.textStyle14.copyWith(color: Colors.black),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Create now',
+                    style: Styles.textStyle14.copyWith(
+                        color: kPrimaryColor, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TextFieldApp extends StatelessWidget {
-  const TextFieldApp({
-    super.key,
-    required this.emailController,
-    this.textInputType = TextInputType.text,
-  });
-
-  final TextEditingController emailController;
-  final TextInputType textInputType ;
- 
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: emailController,
-      keyboardType: textInputType,
-      decoration: const InputDecoration(
-        hintText: 'Enter email',
-        labelText: 'Email',
       ),
     );
   }
