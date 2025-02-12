@@ -28,6 +28,12 @@ class MyApp extends StatelessWidget {
             )
           ],
           child: MaterialApp(
+            theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+              )
+            ),
             initialRoute: '/login_view',
             routes: {
               '/splash_view': (context) => const SplashView(),
