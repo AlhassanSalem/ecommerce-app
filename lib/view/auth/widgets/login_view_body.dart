@@ -91,7 +91,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   style: Styles.textStyle14.copyWith(color: Colors.black),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/register_view');
+                  },
                   child: Text(
                     'Create now',
                     style: Styles.textStyle14.copyWith(
