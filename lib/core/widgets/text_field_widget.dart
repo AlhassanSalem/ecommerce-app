@@ -21,18 +21,18 @@ class TextFieldApp extends StatefulWidget {
 }
 
 class _TextFieldAppState extends State<TextFieldApp> {
-  bool _obscureText = true;
+  bool _obscureText = false;
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.emailController,
-      obscureText: _obscureText,
+      obscureText: isPassword ? !_obscureText : _obscureText,
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
         hintText: widget.hintText,
         labelText: widget.lableText,
         prefixIcon: Icon(widget.prefix),
-        suffixIcon: widget.lableText == 'Password'
+        suffixIcon: isPassword
             ? IconButton(
                 onPressed: () {
                   setState(() {
@@ -46,4 +46,6 @@ class _TextFieldAppState extends State<TextFieldApp> {
       ),
     );
   }
+
+  bool get isPassword => widget.lableText == 'Password';
 }
