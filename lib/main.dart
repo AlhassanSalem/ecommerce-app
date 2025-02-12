@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/provider/product_provider.dart';
-import 'package:ecommerce_app/view/splash_view.dart';
-import 'package:ecommerce_app/view/widgets/splash_view_body.dart';
+import 'package:ecommerce_app/view/app/splash_view.dart';
+import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
