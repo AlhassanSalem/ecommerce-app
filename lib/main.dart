@@ -3,7 +3,9 @@ import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
 import 'package:ecommerce_app/view/auth/login_view.dart';
+import 'package:ecommerce_app/view/auth/register_view.dart';
 import 'package:ecommerce_app/view/auth/widgets/login_view_body.dart';
+import 'package:ecommerce_app/view/auth/widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,6 +81,8 @@ class MyApp extends StatelessWidget {
               '/splash_view_body': (context) => const SplashViewBody(),
               '/login_view': (context) => const LoginView(),
               '/login_view_body': (context) => const LoginViewBody(),
+              '/register_view': (context) => const RegisterView(),
+              '/register_view_body': (context) => const RegisterViewBody(),
             },
           ),
         );
