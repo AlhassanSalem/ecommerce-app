@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/core/constants.dart';
+import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
@@ -35,8 +37,9 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 centerTitle: true,
               ),
-              inputDecorationTheme:  InputDecorationTheme(
-                labelStyle: GoogleFonts.montserrat(fontSize: 12, color: Colors.black),
+              inputDecorationTheme: InputDecorationTheme(
+                labelStyle:
+                    GoogleFonts.montserrat(fontSize: 12, color: Colors.black),
                 hintStyle: GoogleFonts.montserrat(
                   fontSize: 12,
                 ),
@@ -44,13 +47,19 @@ class MyApp extends StatelessWidget {
                 border: const OutlineInputBorder(),
                 focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.blueAccent,
+                    color: kPrimaryColor,
                   ),
                 ),
                 errorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.red,
                   ),
+                ),
+              ),
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 45.h),
+                  backgroundColor: kPrimaryColor,
                 ),
               ),
             ),
