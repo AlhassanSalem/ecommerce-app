@@ -15,6 +15,12 @@ abstract class Styles {
     color: Colors.black,
   );
 
+  static TextStyle textStyle16 = GoogleFonts.montserrat(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
   static TextStyle textStyle14 = GoogleFonts.montserrat(
       fontSize: 12.sp,
       color: Colors.black38,
