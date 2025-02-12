@@ -16,7 +16,7 @@ class DbController {
     return _instance ??= DbController._();
   }
 
-  void initDatabase() async {
+  Future<void> initDatabase() async {
     Directory directory = await getApplicationSupportDirectory();
     String path = join(directory.path, 'app_db.sql');
     _database =

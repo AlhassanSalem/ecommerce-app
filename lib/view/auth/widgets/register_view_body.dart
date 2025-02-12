@@ -1,5 +1,9 @@
+import 'package:ecommerce_app/core/extension/extension_context.dart';
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
+import 'package:ecommerce_app/database/controller/user_db_controller.dart';
+import 'package:ecommerce_app/models/process_response.dart';
+import 'package:ecommerce_app/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -85,7 +89,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               height: 16.sp,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _performRegister(),
               child: Text(
                 'CREATE',
                 style: Styles.textStyle14.copyWith(
@@ -98,5 +102,25 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
         ),
       ),
     );
+  }
+
+  void _performRegister() async {
+    if (user.isValid) {
+      ProcessResponse response = await UserDbController().register(user);
+      context.showSnakBar(message: response.message, success: response.success);
+      if (response.success) {
+        Navigator.pop(context);
+      }
+    } else {
+      context.showSnakBar(message: 'Enter Required Data');
+    }
+  }
+
+  User get user {
+    User user = User();
+    user.name = _nameContoller.text;
+    user.email = _emailContoller.text;
+    user.password = _passwordContoller.text;
+    return user;
   }
 }

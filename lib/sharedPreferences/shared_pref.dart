@@ -16,7 +16,7 @@ class SharedPrefController{
   }
 
 
-  void initPref() async{
+  Future<void> initPref() async{
     _preferences = await SharedPreferences.getInstance();
   }
 

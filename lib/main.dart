@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/constants.dart';
+import 'package:ecommerce_app/database/DbController.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
+import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
 import 'package:ecommerce_app/view/auth/login_view.dart';
@@ -11,7 +13,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefController().initPref();
+  await DbController().initDatabase();
   runApp(const MyApp());
 }
 
