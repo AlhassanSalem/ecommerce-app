@@ -13,8 +13,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        Text('Welcome Back...'),
-        Text('Please Enter email and password...'),
+        children: [
+          Text('Welcome Back...'),
+          Text('Please Enter email and password...'),
+        ],
       ),
     );
   }
