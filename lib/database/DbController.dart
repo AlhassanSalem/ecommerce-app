@@ -37,7 +37,7 @@ class DbController {
           'price REAL NOT NULL,'
           'quantity INTEGER DEFAULT 0,'
           'user_id INTEGER,'
-          'FOREIGN KEY user_id reference users(id)'
+          'FOREIGN KEY (user_id) REFERENCES users(id)'
           ')');
 
       await database.execute('CREATE TABLE cart('
@@ -47,8 +47,8 @@ class DbController {
           'count INTEGER NOT NULL,'
           'user_id INTEGER,'
           'product_id INTEGER,'
-          'FOREIGN KEY user_id reference users(id),'
-          'FOREIGN KEY product_id reference products(id)'
+          'FOREIGN KEY (user_id) REFERENCES users(id),'
+          'FOREIGN KEY (product_id) REFERENCES products(id)'
           ')');
     });
   }
