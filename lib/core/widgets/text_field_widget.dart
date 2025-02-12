@@ -8,7 +8,6 @@ class TextFieldApp extends StatefulWidget {
     required this.hintText,
     required this.prefix,
     this.textInputType = TextInputType.text,
-    this.obscureText = false,
   });
 
   final TextEditingController emailController;
@@ -16,28 +15,32 @@ class TextFieldApp extends StatefulWidget {
   final String lableText;
   final String hintText;
   final IconData prefix;
-  final bool obscureText;
 
   @override
   State<TextFieldApp> createState() => _TextFieldAppState();
 }
 
 class _TextFieldAppState extends State<TextFieldApp> {
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.emailController,
-      obscureText: widget.obscureText,
+      obscureText: _obscureText,
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
         hintText: widget.hintText,
         labelText: widget.lableText,
         prefixIcon: Icon(widget.prefix),
-        suffixIcon: widget.obscureText
+        suffixIcon: widget.lableText == 'Password'
             ? IconButton(
                 onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
                 },
-                icon: Icon(widget.obscureText?Icons.visibility : Icons.visibility_off),
+                icon: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off),
               )
             : null,
       ),
