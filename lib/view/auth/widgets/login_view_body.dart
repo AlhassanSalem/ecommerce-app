@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/styles.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -12,11 +13,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          Text('Welcome Back...'),
-          Text('Please Enter email and password...'),
-        ],
+      body: Padding(
+        padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Welcome Back...',
+              style: Styles.textStyle18,
+            ),
+            Text('Please Enter email and password...'),
+          ],
+        ),
       ),
     );
   }
