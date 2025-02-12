@@ -5,6 +5,7 @@ import 'package:ecommerce_app/view/auth/login_view.dart';
 import 'package:ecommerce_app/view/auth/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -29,11 +30,30 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             theme: ThemeData(
-                appBarTheme: const AppBarTheme(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              centerTitle: true,
-            )),
+              appBarTheme: const AppBarTheme(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                centerTitle: true,
+              ),
+              inputDecorationTheme:  InputDecorationTheme(
+                labelStyle: GoogleFonts.montserrat(fontSize: 12, color: Colors.black),
+                hintStyle: GoogleFonts.montserrat(
+                  fontSize: 12,
+                ),
+                alignLabelWithHint: true,
+                border: const OutlineInputBorder(),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+                errorBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ),
             initialRoute: '/login_view',
             routes: {
               '/splash_view': (context) => const SplashView(),
