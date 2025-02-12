@@ -35,7 +35,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       appBar: AppBar(
         title: Text(
           'LOGIN',
-          style: Styles.textStyle20,
+          style: Styles.textStyle18,
         ),
       ),
       body: Padding(
@@ -45,7 +45,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           children: [
             Text(
               'Welcome Back...',
-              style: Styles.textStyle18,
+              style: Styles.textStyle16,
             ),
             Text(
               'Please Enter email and password...',
