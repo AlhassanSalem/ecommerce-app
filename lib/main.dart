@@ -62,6 +62,17 @@ class MyApp extends StatelessWidget {
                   backgroundColor: kPrimaryColor,
                 ),
               ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  visualDensity: const VisualDensity(
+                    horizontal: VisualDensity.minimumDensity,
+                    vertical: VisualDensity.minimumDensity,
+                  ),
+                  padding: const EdgeInsetsDirectional.only(
+                    start: 4,
+                  ),
+                ),
+              ),
             ),
             initialRoute: '/login_view',
             routes: {
