@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/core/constants.dart';
-import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
