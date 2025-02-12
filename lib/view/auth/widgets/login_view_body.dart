@@ -12,7 +12,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'LOGIN',
+          style: Styles.textStyle20,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
         child: Column(
@@ -22,7 +27,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               'Welcome Back...',
               style: Styles.textStyle18,
             ),
-            Text('Please Enter email and password...', ),
+            Text(
+              'Please Enter email and password...',
+              style: Styles.textStyle14,
+            ),
           ],
         ),
       ),
