@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -11,6 +11,25 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,26 +55,33 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             SizedBox(
               height: 16.h,
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter email',
-                labelText: 'Email',
-                labelStyle:
-                    GoogleFonts.montserrat(fontSize: 12, color: Colors.black),
-                hintStyle: GoogleFonts.montserrat(
-                  fontSize: 12,
-                ),
-                alignLabelWithHint: true,
-                border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.blueAccent,
-                  ),
-                ),
-              ),
-            ),
+            TextFieldApp(emailController: _emailController, textInputType: TextInputType.emailAddress,),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TextFieldApp extends StatelessWidget {
+  const TextFieldApp({
+    super.key,
+    required this.emailController,
+    this.textInputType = TextInputType.text,
+  });
+
+  final TextEditingController emailController;
+  final TextInputType textInputType ;
+ 
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: emailController,
+      keyboardType: textInputType,
+      decoration: const InputDecoration(
+        hintText: 'Enter email',
+        labelText: 'Email',
       ),
     );
   }
