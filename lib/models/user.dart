@@ -7,7 +7,7 @@ class User {
   User();
 
   /// READ ROW DATA FROM DATABASE TABLE
-  User.fromMap(Map<String,dynamic> rowMap) {
+  User.fromMap(Map<String, dynamic> rowMap) {
     id = rowMap['id'];
     name = rowMap['name'];
     email = rowMap['email'];
@@ -23,5 +23,9 @@ class User {
     map['name'] = name;
 
     return map;
+  }
+
+  bool get isValid {
+    return name.isNotEmpty && password.isNotEmpty && email.isNotEmpty;
   }
 }
