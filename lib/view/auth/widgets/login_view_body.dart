@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -30,6 +32,27 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             Text(
               'Please Enter email and password...',
               style: Styles.textStyle14,
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter email',
+                labelText: 'Email',
+                labelStyle:
+                    GoogleFonts.montserrat(fontSize: 12, color: Colors.black),
+                hintStyle: GoogleFonts.montserrat(
+                  fontSize: 12,
+                ),
+                alignLabelWithHint: true,
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
