@@ -1,10 +1,7 @@
-import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});
@@ -39,8 +36,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'LOGIN',
-          style: Styles.textStyle20,
+          'CREATE ACCOUNT',
+          style: Styles.textStyle18,
         ),
       ),
       body: Padding(
@@ -49,11 +46,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Welcome Back...',
-              style: Styles.textStyle18,
+              'Welcome to ecommerce app',
+              style: Styles.textStyle16,
             ),
             Text(
-              'Please Enter email and password...',
+              'Please enter required data below...',
               style: Styles.textStyle14,
             ),
             SizedBox(
@@ -63,7 +60,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               emailController: _nameContoller,
               lableText: 'Name',
               hintText: 'Enter Your Name',
-              prefix: Icons.email,
+              prefix: Icons.person,
             ),
             SizedBox(
               height: 8.h,
