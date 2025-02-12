@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375,812),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       builder: (context, child) {
         return MultiProvider(
@@ -29,11 +29,11 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-              )
-            ),
+                appBarTheme: const AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              centerTitle: true,
+            )),
             initialRoute: '/login_view',
             routes: {
               '/splash_view': (context) => const SplashView(),
