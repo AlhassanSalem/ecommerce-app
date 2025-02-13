@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class TextFieldApp extends StatefulWidget {
   const TextFieldApp({
     super.key,
-    required this.emailController,
+    required this.controller,
     required this.lableText,
     required this.hintText,
     required this.prefix,
     this.textInputType = TextInputType.text,
   });
 
-  final TextEditingController emailController;
+  final TextEditingController controller;
   final TextInputType textInputType;
   final String lableText;
   final String hintText;
@@ -25,7 +25,7 @@ class _TextFieldAppState extends State<TextFieldApp> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: widget.emailController,
+      controller: widget.controller,
       obscureText: isPassword ? !_obscureText : _obscureText,
       keyboardType: widget.textInputType,
       decoration: InputDecoration(
