@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/constants.dart';
+import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/database/DbController.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
@@ -40,9 +41,10 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(
+              appBarTheme: AppBarTheme(
                 elevation: 0,
                 backgroundColor: Colors.transparent,
+                titleTextStyle: Styles.textStyle18,
                 centerTitle: true,
               ),
               inputDecorationTheme: InputDecorationTheme(
