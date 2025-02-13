@@ -38,6 +38,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   String get navigatePath {
-    return SharedPrefController().getValueFor(key: PrefKeys.loggedIn) ? '/home_view' : '/login_view';
+    return SharedPrefController()
+            .getValueFor<bool>(key: PrefKeys.loggedIn, defaultValue: false)!
+        ? '/home_view'
+        : '/login_view';
   }
 }
