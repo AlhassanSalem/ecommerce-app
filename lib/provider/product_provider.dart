@@ -7,7 +7,7 @@ class ProductProvider extends ChangeNotifier {
   List<Product> _products = <Product>[];
   late ProductDbController _productDbController = ProductDbController();
 
-  List<Product> get product => _products;
+  List<Product> get products => _products;
 
   Future<ProcessResponse> create({required Product product}) async {
     int newRowId = await _productDbController.create(product);
