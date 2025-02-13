@@ -14,11 +14,10 @@ class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
     required this.product,
-    required this.index,
+
   });
 
   final Product product;
-  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +70,7 @@ class ProductCard extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(Icons.shopping_cart, color: kPrimaryColor)),
           IconButton(
-              onPressed: () => _deleteProduct(context,index),
+              onPressed: () => _deleteProduct(context,product.id),
               icon: const Icon(
                 Icons.delete_outline_outlined,
                 color: Colors.redAccent,
@@ -81,8 +80,8 @@ class ProductCard extends StatelessWidget {
     );
   }
 
-  void _deleteProduct(BuildContext context,int index) async{
-    ProcessResponse response = await Provider.of<ProductProvider>(context).delete(index);
+  void _deleteProduct(BuildContext context,int id) async{
+    ProcessResponse response = await Provider.of<ProductProvider>(context,listen: false).delete(product.id);
     context.showSnakBar(message: response.message, success: response.success);
   }
 }
