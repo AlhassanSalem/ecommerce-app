@@ -39,9 +39,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'CREATE ACCOUNT',
-          style: Styles.textStyle18,
         ),
       ),
       body: Padding(
