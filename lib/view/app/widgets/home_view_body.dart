@@ -7,12 +7,23 @@ import 'package:ecommerce_app/view/app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
   @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ProductProvider>(context,listen: false).read();
+  }
+  @override
   Widget build(BuildContext context) {
-    final List<Product> product = Provider.of<ProductProvider>(context).products;
+    final List<Product> products = Provider.of<ProductProvider>(context).products;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -20,7 +31,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () => navigateToOperationsOnProduct(context),
+            onPressed: () => navigateToOperationsOnProduct(),
             icon: const Icon(
               Icons.add,
               color: kPrimaryColor,
@@ -33,13 +44,13 @@ class HomeViewBody extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: products.length,
         itemBuilder: (context, index) {
-          return const ProductCard(
-            name: 'Product Name',
-            info: '#Prodcut info...',
-            price: 20.0,
-            quantity: 5,
+          return ProductCard(
+            name: products[index].name,
+            info: products[index].info,
+            price: products[index].price,
+            quantity: products[index].quantity,
           );
         },
       ),
@@ -49,7 +60,7 @@ class HomeViewBody extends StatelessWidget {
   void _logout(BuildContext context) async {
     if (await _showLogoutDialog(context)) {
       SharedPrefController().clear();
-      navigateToLogin(context);
+      navigateToLogin();
     }
   }
 
@@ -90,15 +101,20 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 
-  void navigateToLogin(BuildContext context) {
+  void navigateToLogin() {
     Future.delayed(const Duration(milliseconds: 250), () {
       Navigator.pushReplacementNamed(context, '/login_view');
     });
   }
 
-  void navigateToOperationsOnProduct(BuildContext context) {
+  void navigateToOperationsOnProduct() {
     Future.delayed(const Duration(milliseconds: 250), () {
       Navigator.pushNamed(context, '/operations_on_products_view');
     });
   }
 }
+
+
+
+
+
