@@ -1,6 +1,9 @@
 import 'package:ecommerce_app/core/constants.dart';
+import 'package:ecommerce_app/core/extension/extension_context.dart';
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
+import 'package:ecommerce_app/database/controller/user_db_controller.dart';
+import 'package:ecommerce_app/models/process_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -74,7 +77,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               height: 16.sp,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _performLogin(),
               child: Text(
                 'LOGIN',
                 style: Styles.textStyle14.copyWith(
@@ -106,5 +109,20 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         ),
       ),
     );
+  }
+
+  void _performLogin() async {
+    ProcessResponse response = await UserDbController()
+        .login(_emailController.text, _passwordController.text);
+
+    if (response.success) {
+      _navigateToHome(); 
+    }
+    context.showSnakBar(message: response.message, success: response.success);
+    
+  }
+
+  void _navigateToHome() {
+    Navigator.pushReplacementNamed(context, '/home_view');
   }
 }
