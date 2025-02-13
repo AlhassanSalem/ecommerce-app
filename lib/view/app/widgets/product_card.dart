@@ -1,23 +1,24 @@
 
 import 'package:ecommerce_app/core/constants.dart';
+import 'package:ecommerce_app/core/extension/extension_context.dart';
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/models/process_response.dart';
+import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
-    required this.name,
-    required this.info,
-    required this.price,
-    required this.quantity,
+    required this.product,
+    required this.index,
   });
 
-  final String name;
-  final String info;
-  final double price;
-  final int quantity;
+  final Product product;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +39,11 @@ class ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                name,
+                product.name,
                 style: Styles.textStyle16,
               ),
               Text(
-                info,
+                product.info,
                 style: Styles.textStyle14,
               ),
               SizedBox(
@@ -51,14 +52,14 @@ class ProductCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Price: $price\$',
+                    'Price: ${product.price}\$',
                     style: Styles.textStyle14.copyWith(height: 1.1.h),
                   ),
                   SizedBox(
                     width: 20.w,
                   ),
                   Text(
-                    'Quantity: $quantity',
+                    'Quantity: ${product.quantity}',
                     style: Styles.textStyle14.copyWith(height: 1.1.h),
                   ),
                 ],
@@ -70,7 +71,7 @@ class ProductCard extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(Icons.shopping_cart, color: kPrimaryColor)),
           IconButton(
-              onPressed: () {},
+              onPressed: () => _deleteProduct(context,index),
               icon: const Icon(
                 Icons.delete_outline_outlined,
                 color: Colors.redAccent,
@@ -78,5 +79,10 @@ class ProductCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _deleteProduct(BuildContext context,int index) async{
+    ProcessResponse response = await Provider.of<ProductProvider>(context).delete(index);
+    context.showSnakBar(message: response.message, success: response.success);
   }
 }
