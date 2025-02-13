@@ -3,7 +3,6 @@ import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:ecommerce_app/view/app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -17,7 +16,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => navigateToOperationsOnProduct(context),
             icon: const Icon(
               Icons.add,
               color: kPrimaryColor,
@@ -90,6 +89,12 @@ class HomeViewBody extends StatelessWidget {
   void navigateToLogin(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 250), () {
       Navigator.pushReplacementNamed(context, '/login_view');
+    });
+  }
+
+  void navigateToOperationsOnProduct(BuildContext context) {
+    Future.delayed(const Duration(milliseconds: 250), () {
+      Navigator.pushNamed(context, '/operations_on_products_view');
     });
   }
 }

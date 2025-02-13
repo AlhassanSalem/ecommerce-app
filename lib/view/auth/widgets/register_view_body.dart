@@ -60,7 +60,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               height: 16.h,
             ),
             TextFieldApp(
-              emailController: _nameContoller,
+              controller: _nameContoller,
               lableText: 'Name',
               hintText: 'Enter Your Name',
               prefix: Icons.person,
@@ -69,7 +69,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               height: 8.h,
             ),
             TextFieldApp(
-              emailController: _emailContoller,
+              controller: _emailContoller,
               lableText: 'Email',
               hintText: 'Enter Your Email',
               prefix: Icons.email,
@@ -79,7 +79,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               height: 8.h,
             ),
             TextFieldApp(
-              emailController: _passwordContoller,
+              controller: _passwordContoller,
               lableText: 'Password',
               hintText: 'Enter password',
               prefix: Icons.lock,

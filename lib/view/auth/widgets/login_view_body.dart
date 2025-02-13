@@ -57,7 +57,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               height: 16.h,
             ),
             TextFieldApp(
-              emailController: _emailController,
+              controller: _emailController,
               lableText: 'Email',
               hintText: 'Enter Your Email',
               prefix: Icons.email,
@@ -67,7 +67,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               height: 8.h,
             ),
             TextFieldApp(
-              emailController: _passwordController,
+              controller: _passwordController,
               lableText: 'Password',
               hintText: 'Enter password',
               prefix: Icons.lock,
