@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            initialRoute: '/login_view',
+            initialRoute: '/splash_view',
             routes: {
               '/splash_view': (context) => const SplashView(),
               '/splash_view_body': (context) => const SplashViewBody(),
