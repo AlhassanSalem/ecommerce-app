@@ -46,12 +46,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       body: ListView.builder(
         itemCount: products.length,
         itemBuilder: (context, index) {
-          return ProductCard(
-            name: products[index].name,
-            info: products[index].info,
-            price: products[index].price,
-            quantity: products[index].quantity,
-          );
+          return ProductCard(product: products[index]);
         },
       ),
     );
