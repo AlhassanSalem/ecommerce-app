@@ -12,7 +12,7 @@ class _OperationsOnProductsViewBodyState extends State<OperationsOnProductsViewB
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Operations'),,
+        title: Text('Operations'),
       )
     );
   }
