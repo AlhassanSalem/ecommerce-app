@@ -7,13 +7,24 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Home',
+        ),
+      ),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
           return ListTile(
             leading: const Icon(Icons.shopping_basket_rounded),
-            title: Text('Name Product',style: Styles.textStyle16,),
-            subtitle: Text('Info about product',style: Styles.textStyle14,),
+            title: Text(
+              'Name Product',
+              style: Styles.textStyle16,
+            ),
+            subtitle: Text(
+              'Info about product',
+              style: Styles.textStyle14,
+            ),
           );
         },
       ),
