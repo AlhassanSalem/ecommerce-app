@@ -1,14 +1,18 @@
 import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:ecommerce_app/view/app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<Product> product = Provider.of<ProductProvider>(context).products;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
