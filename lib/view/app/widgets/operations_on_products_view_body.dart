@@ -1,8 +1,12 @@
+import 'package:ecommerce_app/core/extension/extension_context.dart';
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
+import 'package:ecommerce_app/models/process_response.dart';
 import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class OperationsOnProductsViewBody extends StatefulWidget {
   const OperationsOnProductsViewBody({super.key, this.product});
@@ -42,7 +46,7 @@ class _OperationsOnProductsViewBodyState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Operations'),
+        title: Text(!_isUpdated ? 'Create Product' : 'Update Product'),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -50,7 +54,7 @@ class _OperationsOnProductsViewBodyState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Add new product...',
+              !_isUpdated ? 'Create new product...' : 'Update product',
               style: Styles.textStyle16,
             ),
             Text(
@@ -109,9 +113,9 @@ class _OperationsOnProductsViewBodyState
               height: 16.h,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _performOperation(),
               child: Text(
-                'Create',
+                !_isUpdated ? 'Create' : 'Update',
                 style: Styles.textStyle14
                     .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
@@ -120,5 +124,26 @@ class _OperationsOnProductsViewBodyState
         ),
       ),
     );
+  }
+
+  bool get _isUpdated => widget.product != null;
+
+  Product get product {
+    Product product = Product();
+    product.name = _nameController.text;
+    product.info = _infoController.text;
+    product.price = double.parse(_priceController.text);
+    product.quantity = int.parse(_quantityController.text);
+    return product;
+  }
+
+  void _performOperation() async {
+    ProcessResponse response = _isUpdated
+        ? await Provider.of<ProductProvider>(context, listen: false).update(
+            product: product,
+          )
+        : await Provider.of<ProductProvider>(context, listen: false)
+            .create(product: product);
+    context.showSnakBar(message: response.message, success: response.success);
   }
 }
