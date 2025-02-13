@@ -19,6 +19,11 @@ class ProductProvider extends ChangeNotifier {
     return getResponse(OperationsType.added, newRowId != 0);
   }
 
+  void read() async{
+    _products = await _productDbController.read();
+    notifyListeners();
+  }
+
   Future<ProcessResponse> update({required Product product}) async {
     int countOfRowsUpdated = await _productDbController.update(product);
     if(countOfRowsUpdated > 0) {
