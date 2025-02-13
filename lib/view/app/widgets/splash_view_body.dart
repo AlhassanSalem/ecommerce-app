@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:flutter/material.dart';
 
@@ -10,11 +11,33 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
+  void initState() {
+    super.initState();
+    _navigateToPath();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Ecommerce app',),
+        child: Text(
+          'Ecommerce app',
+          style: Styles.textStyle20,
+        ),
       ),
     );
+  }
+
+  void _navigateToPath() {
+    Future.delayed(
+      const Duration(milliseconds: 250),
+      () {
+        Navigator.pushReplacementNamed(context, navigatePath);
+      },
+    );
+  }
+
+  String get navigatePath {
+    return SharedPrefController().getValueFor(key: PrefKeys.loggedIn) ? '/home_view' : '/login_view';
   }
 }
