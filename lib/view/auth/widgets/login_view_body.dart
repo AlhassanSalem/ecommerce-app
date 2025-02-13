@@ -36,9 +36,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'LOGIN',
-          style: Styles.textStyle18,
         ),
       ),
       body: Padding(
