@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
+import 'package:ecommerce_app/view/app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -15,6 +17,13 @@ class HomeViewBody extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.add,
+              color: kPrimaryColor,
+            ),
+          ),
+          IconButton(
             onPressed: () => _logout(context),
             icon: const Icon(Icons.logout),
           ),
@@ -23,16 +32,11 @@ class HomeViewBody extends StatelessWidget {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: const Icon(Icons.shopping_basket_rounded),
-            title: Text(
-              'Name Product',
-              style: Styles.textStyle16,
-            ),
-            subtitle: Text(
-              'Info about product',
-              style: Styles.textStyle14,
-            ),
+          return const ProductCard(
+            name: 'Product Name',
+            info: '#Prodcut info...',
+            price: 20.0,
+            quantity: 5,
           );
         },
       ),
