@@ -23,6 +23,8 @@ class ProductProvider extends ChangeNotifier {
     int countOfRowsUpdated = await _productDbController.update(product);
     if(countOfRowsUpdated > 0) {
       int index = _products.indexWhere((element) => element.id == product.id);
+      _products[index] = product;
+      notifyListeners();
     }
     return getResponse(OperationsType.updated, countOfRowsUpdated > 0);
   }
@@ -41,8 +43,8 @@ class ProductProvider extends ChangeNotifier {
   ProcessResponse getResponse(OperationsType type , bool conditionForSuccess){
     return ProcessResponse(
       message: conditionForSuccess
-          ? 'Product deleted successfully'
-          : 'Product deleted failed',
+          ? 'Product ${type.name} successfully'
+          : 'Product ${type.name} failed',
       success: conditionForSuccess,
     );
   }

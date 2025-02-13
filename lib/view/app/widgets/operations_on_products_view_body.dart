@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
 import 'package:ecommerce_app/models/process_response.dart';
 import 'package:ecommerce_app/models/product.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
+import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -134,6 +135,7 @@ class _OperationsOnProductsViewBodyState
     product.info = _infoController.text;
     product.price = double.parse(_priceController.text);
     product.quantity = int.parse(_quantityController.text);
+    product.userId = SharedPrefController().getValueFor(key: PrefKeys.id);
     return product;
   }
 
@@ -144,6 +146,18 @@ class _OperationsOnProductsViewBodyState
           )
         : await Provider.of<ProductProvider>(context, listen: false)
             .create(product: product);
+    if(response.success){
+      _clear();
+    }
     context.showSnakBar(message: response.message, success: response.success);
   }
+
+  void _clear(){
+    _nameController.clear();
+    _infoController.clear();
+    _priceController.clear();
+    _quantityController.clear();
+  }
 }
+
+
