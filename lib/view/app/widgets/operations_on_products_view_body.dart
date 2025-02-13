@@ -1,10 +1,12 @@
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/core/widgets/text_field_widget.dart';
+import 'package:ecommerce_app/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OperationsOnProductsViewBody extends StatefulWidget {
-  const OperationsOnProductsViewBody({super.key});
+  const OperationsOnProductsViewBody({super.key, this.product});
+  final Product? product;
 
   @override
   State<OperationsOnProductsViewBody> createState() =>
