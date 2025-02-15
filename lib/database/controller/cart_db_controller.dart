@@ -21,9 +21,8 @@ class CartDbController extends DbOperation<Cart>{
   }
 
   @override
-  Future<int> update(Cart model) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<int> update(Cart model) async{
+    return await database.update(Cart.tableName, model.toMap(), where: 'user_id = ?', whereArgs: [userId]);
   }
 
 }
