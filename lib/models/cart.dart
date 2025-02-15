@@ -3,8 +3,10 @@ class Cart {
   late double total;
   late double price;
   late int count;
+  late String nameProduct;
   late int userId;
   late int productId;
+
 
   static const String tableName = 'cart';
 
@@ -16,6 +18,7 @@ class Cart {
     total = rowMap['total'];
     price = rowMap['price'];
     count = rowMap['count'];
+    nameProduct = rowMap['name_product'];
     userId = rowMap['user_id'];
     productId = rowMap['product_id'];
   }
@@ -26,6 +29,7 @@ class Cart {
     map['total'] = total;
     map['price'] = price;
     map['count'] = count;
+    map['name_product'] = nameProduct;
     map['user_id'] = userId;
     map['product_id'] =productId;
     return map;
