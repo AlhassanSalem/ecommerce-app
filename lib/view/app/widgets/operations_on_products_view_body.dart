@@ -28,10 +28,10 @@ class _OperationsOnProductsViewBodyState
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController();
-    _infoController = TextEditingController();
-    _priceController = TextEditingController();
-    _quantityController = TextEditingController();
+    _nameController = TextEditingController(text: widget.product?.name);
+    _infoController = TextEditingController(text: widget.product?.info);
+    _priceController = TextEditingController(text: widget.product?.price.toString());
+    _quantityController = TextEditingController(text: widget.product?.quantity.toString());
   }
 
   @override
