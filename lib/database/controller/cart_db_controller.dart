@@ -3,9 +3,8 @@ import 'package:ecommerce_app/models/cart.dart';
 
 class CartDbController extends DbOperation<Cart>{
   @override
-  Future<int> create(Cart model) {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<int> create(Cart model) async{
+    return await database.insert(Cart.tableName, model.toMap());
   }
 
   @override
