@@ -15,9 +15,9 @@ class CartDbController extends DbOperation<Cart>{
   }
 
   @override
-  Future<List<Cart>> read() {
-    // TODO: implement read
-    throw UnimplementedError();
+  Future<List<Cart>> read() async{
+    List<Map<String,dynamic>> rowsMap = await database.query(Cart.tableName, where: 'user_id = ? ', whereArgs: [userId]);
+    return rowsMap.map((rowsMap) => Cart.fromMap(rowsMap)).toList();
   }
 
   @override
