@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 class ProductProvider extends ChangeNotifier {
   List<Product> _products = <Product>[];
-  late ProductDbController _productDbController = ProductDbController();
+  final ProductDbController _productDbController = ProductDbController();
 
   List<Product> get products => _products;
 
