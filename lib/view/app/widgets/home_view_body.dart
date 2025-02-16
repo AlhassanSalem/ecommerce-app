@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:ecommerce_app/view/app/widgets/product_card.dart';
@@ -20,6 +21,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   void initState() {
     super.initState();
     Provider.of<ProductProvider>(context,listen: false).read();
+    Provider.of<CartProvider>(context,listen: false).read();
+
   }
   @override
   Widget build(BuildContext context) {
