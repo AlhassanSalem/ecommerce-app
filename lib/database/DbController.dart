@@ -44,7 +44,7 @@ class DbController {
           'id INTEGER PRIMARY KEY AUTOINCREMENT,'
           'total REAL NOT NULL,'
           'price REAL NOT NULL,'
-          'count INTEGER NOT NULL,'
+          'count INTEGER DEFAULT 1,'
           'user_id INTEGER,'
           'product_id INTEGER,'
           'FOREIGN KEY (user_id) REFERENCES users(id),'
