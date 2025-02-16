@@ -21,7 +21,7 @@ class CartDbController extends DbOperation<Cart> {
   Future<List<Cart>> read() async {
     //List<Map<String,dynamic>> rowsMap = await database.query(Cart.tableName, where: 'user_id = ? ', whereArgs: [userId]);
     List<Map<String, dynamic>> rowsMap = await database.rawQuery(
-        'SELECT cart.id, cart.total, cart.price, cart.count, cart.name_product, cart.user_id, cart.product_id,'
+        'SELECT cart.id, cart.total, cart.price, cart.count, cart.user_id, cart.product_id,'
         'FROM cart,'
         'JOIN products on cart.product_id = products.id,'
         'WHERE cart.user_id = ?',
