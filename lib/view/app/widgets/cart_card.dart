@@ -1,11 +1,21 @@
+import 'package:ecommerce_app/core/extension/extension_context.dart';
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/models/cart.dart';
+import 'package:ecommerce_app/models/process_response.dart';
+import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/core/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:provider/provider.dart';
 
 class CartCard extends StatelessWidget {
-  const CartCard({super.key});
+  const CartCard({
+    super.key,
+    required this.cart,
+    required this.index,
+  });
+  final Cart cart;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +25,16 @@ class CartCard extends StatelessWidget {
           top: 0,
           right: 0,
           child: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.delete, color: Colors.redAccent,),
+            onPressed: () => deleteItemFromCartById(context,cart.id),
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.redAccent,
+            ),
           ),
         ),
         Container(
-          padding: EdgeInsetsDirectional.symmetric(vertical: 25.h,horizontal: 16.w),
+          padding:
+              EdgeInsetsDirectional.symmetric(vertical: 25.h, horizontal: 16.w),
           margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: kPrimaryColor.withOpacity(.08),
@@ -40,14 +54,14 @@ class CartCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Product Name',
+                    cart.nameProduct,
                     style: Styles.textStyle14.copyWith(
                         color: kPrimaryColor, fontWeight: FontWeight.bold),
                   ),
                   Row(
                     children: [
                       Text(
-                        'Quantity: 10',
+                        'Quantity: ${cart.count}',
                         style: Styles.textStyle14.copyWith(
                           height: 1.6.h,
                         ),
@@ -56,7 +70,7 @@ class CartCard extends StatelessWidget {
                         width: 10.w,
                       ),
                       Text(
-                        'total: 5',
+                        'total: ${cart.total}',
                         style: Styles.textStyle14.copyWith(
                           height: 1.6.h,
                         ),
@@ -73,7 +87,7 @@ class CartCard extends StatelessWidget {
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => changeQuantity(context,++cart.count),
                       padding: EdgeInsets.zero,
                       visualDensity: const VisualDensity(
                         horizontal: VisualDensity.minimumDensity,
@@ -85,11 +99,12 @@ class CartCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '1',
+                      '${cart.count}',
+
                       style: Styles.textStyle14,
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => changeQuantity(context,--cart.count),
                       padding: EdgeInsets.zero,
                       visualDensity: const VisualDensity(
                         horizontal: VisualDensity.minimumDensity,
@@ -109,4 +124,15 @@ class CartCard extends StatelessWidget {
       ],
     );
   }
+
+  void deleteItemFromCartById(BuildContext context,int id) async {
+    ProcessResponse response = await Provider.of<CartProvider>(context,listen: false).delete(cart.id);
+    context.showSnakBar(message: response.message, success: response.success);
+  }
+
+  void changeQuantity(BuildContext context,int count){
+    Provider.of<CartProvider>(context,listen: false).changeQuantity(index,count);
+  }
+
+
 }

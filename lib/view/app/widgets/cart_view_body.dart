@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:ecommerce_app/view/app/widgets/cart_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class CartViewBody extends StatefulWidget {
   const CartViewBody({super.key});
@@ -12,22 +13,40 @@ class CartViewBody extends StatefulWidget {
 }
 
 class _CartViewBodyState extends State<CartViewBody> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Cart'),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.delete),),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.delete),
+          ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return CartCard();
+      body: Consumer<CartProvider>(
+        builder: (context, CartProvider value, child) {
+          if (value.cartItem.isNotEmpty) {
+            return ListView.builder(
+              itemCount: value.cartItem.length,
+              itemBuilder: (context, index) {
+                return CartCard(cart: value.cartItem[index], index:index,);
+              },
+            );
+          } else {
+            return Center(
+              child: Text(
+                'Empty Card',
+                style: Styles.textStyle20.copyWith(
+                  color: kPrimaryColor.withOpacity(0.18),
+                ),
+              ),
+            );
+          }
         },
       ),
     );
   }
 }
-

@@ -2,9 +2,12 @@
 import 'package:ecommerce_app/core/constants.dart';
 import 'package:ecommerce_app/core/extension/extension_context.dart';
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/models/cart.dart';
 import 'package:ecommerce_app/models/process_response.dart';
 import 'package:ecommerce_app/models/product.dart';
+import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
+import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:ecommerce_app/view/app/widgets/operations_on_products_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -70,7 +73,9 @@ class ProductCard extends StatelessWidget {
             ),
             const Spacer(),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<CartProvider>(context,listen: false).create(cart);
+                },
                 icon: const Icon(Icons.shopping_cart, color: kPrimaryColor)),
             IconButton(
                 onPressed: () => _deleteProduct(context,product.id),
@@ -82,6 +87,17 @@ class ProductCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Cart get cart {
+    Cart cart = Cart();
+    cart.nameProduct = product.name;
+    cart.price = product.price;
+    cart.count = 1;
+    cart.productId = product.id;
+    cart.total = cart.count * cart.price;
+    cart.userId = SharedPrefController().getValueFor<int>(key: PrefKeys.id)!;
+    return cart;
   }
 
   void _deleteProduct(BuildContext context,int id) async{

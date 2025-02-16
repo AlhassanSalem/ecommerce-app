@@ -10,21 +10,23 @@ class CartProvider extends ChangeNotifier {
 
   List<Cart> get cartItem => _cartItems;
 
-  void create(Cart model) async {
+  Future<ProcessResponse> create(Cart model) async {
     bool isNotExist =
         _cartItems.indexWhere((cartItem) => cartItem.id == model.id) == -1;
-
     if (isNotExist) {
       int newRowId = await _controller.create(model);
       model.id = newRowId;
+      // model.count = 1;
       _cartItems.add(model);
+      return getResponse(newRowId > 0);
     } else {
       int index = _cartItems.indexWhere((cartItem) => cartItem.id == model.id);
       changeQuantity(index, model.count);
     }
+    return getResponse(false);
   }
 
-  void changeQuantity(int index, count) async{
+  Future<ProcessResponse> changeQuantity(int index, count) async{
     if (count > 1) {
       Cart model = _cartItems[index];
       model.count = count;
@@ -34,9 +36,11 @@ class CartProvider extends ChangeNotifier {
         _cartItems[index] = model;
         notifyListeners();
       }
+      return getResponse(isUpdated);
     } else if (count == 0) {
       delete(_cartItems[index].id);
     }
+    return getResponse(false);
   }
 
   void read() async {
