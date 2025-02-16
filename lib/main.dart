@@ -3,9 +3,11 @@ import 'package:ecommerce_app/core/styles.dart';
 import 'package:ecommerce_app/database/DbController.dart';
 import 'package:ecommerce_app/provider/product_provider.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
+import 'package:ecommerce_app/view/app/cart_view.dart';
 import 'package:ecommerce_app/view/app/home_view.dart';
 import 'package:ecommerce_app/view/app/operations_on_products_view.dart';
 import 'package:ecommerce_app/view/app/splash_view.dart';
+import 'package:ecommerce_app/view/app/widgets/cart_view_body.dart';
 import 'package:ecommerce_app/view/app/widgets/home_view_body.dart';
 import 'package:ecommerce_app/view/app/widgets/operations_on_products_view_body.dart';
 import 'package:ecommerce_app/view/app/widgets/splash_view_body.dart';
@@ -98,6 +100,9 @@ class MyApp extends StatelessWidget {
               '/home_view_body': (context) => const HomeViewBody(),
               '/operations_on_products_view': (context) => const OperationsOnProductsView(),
               '/operations_on_products_view_body': (context) => const OperationsOnProductsViewBody(),
+              '/cart_view': (context) => const CartView(),
+              '/cart_view_body': (context) => const CartViewBody(),
+
             },
           ),
         );
