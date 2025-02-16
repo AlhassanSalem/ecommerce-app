@@ -29,7 +29,6 @@ class Cart {
     map['total'] = total;
     map['price'] = price;
     map['count'] = count;
-    map['name_product'] = nameProduct;
     map['user_id'] = userId;
     map['product_id'] =productId;
     return map;
