@@ -25,7 +25,7 @@ class CartProvider extends ChangeNotifier {
   }
 
   void changeQuantity(int index, count) async{
-    if (count >= 1) {
+    if (count > 1) {
       Cart model = _cartItems[index];
       model.count = count;
       model.total = model.count * model.price;
