@@ -43,6 +43,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => navigateToCartView(),
+        backgroundColor: kPrimaryColor,
+        child: const Icon(Icons.shopping_cart_outlined, color: Colors.white,),
+      ),
+
       body: ListView.builder(
         itemCount: products.length,
         itemBuilder: (context, index) {
@@ -106,6 +112,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     Future.delayed(const Duration(milliseconds: 250), () {
       Navigator.pushNamed(context, '/operations_on_products_view');
     });
+  }
+
+  void navigateToCartView(){
+    Navigator.pushNamed(context, '/cart_view');
   }
 }
 
