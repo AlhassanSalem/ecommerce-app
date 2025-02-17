@@ -130,7 +130,7 @@ class _OperationsOnProductsViewBodyState
   bool get _isUpdated => widget.product != null;
 
   Product get product {
-    Product product = Product();
+    Product product = _isUpdated ? widget.product! : Product();
     product.name = _nameController.text;
     product.info = _infoController.text;
     product.price = double.parse(_priceController.text);
