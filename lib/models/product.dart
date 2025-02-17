@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
+
 class Product{
   late int id;
   late String name;
@@ -28,7 +30,7 @@ class Product{
     map['price'] = price;
     map['quantity'] = quantity;
     map['quantity'] = quantity;
-    map['user_id'] = userId;
+    map['user_id'] = SharedPrefController().getValueFor<int>(key: PrefKeys.id)!;
     return map;
   }
 }
