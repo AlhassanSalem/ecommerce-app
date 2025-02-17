@@ -13,8 +13,7 @@ class CartDbController extends DbOperation<Cart> {
   @override
   Future<bool> delete(int id) async {
     return await database.delete(Cart.tableName,
-            where: 'id = ? AND user_id = ?', whereArgs: [id, userId]) ==
-        1;
+            where: 'id = ? AND user_id = ?', whereArgs: [id, userId]) >0;
   }
 
   @override

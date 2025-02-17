@@ -13,6 +13,12 @@ class CartViewBody extends StatefulWidget {
 }
 
 class _CartViewBodyState extends State<CartViewBody> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<CartProvider>(context,listen: false).read();
+  }
 
   @override
   Widget build(BuildContext context) {
