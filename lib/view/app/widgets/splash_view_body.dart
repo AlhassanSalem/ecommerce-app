@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/core/styles.dart';
+import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
