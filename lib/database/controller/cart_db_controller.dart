@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/database/db_oprations.dart';
 import 'package:ecommerce_app/models/cart.dart';
+import 'package:ecommerce_app/models/process_response.dart';
 import 'package:ecommerce_app/sharedPreferences/shared_pref.dart';
 
 class CartDbController extends DbOperation<Cart> {
@@ -19,11 +20,11 @@ class CartDbController extends DbOperation<Cart> {
 
   @override
   Future<List<Cart>> read() async {
-    //List<Map<String,dynamic>> rowsMap = await database.query(Cart.tableName, where: 'user_id = ? ', whereArgs: [userId]);
+
     List<Map<String, dynamic>> rowsMap = await database.rawQuery(
         'SELECT cart.id, cart.total, cart.price, cart.count, cart.user_id, cart.product_id,'
-        'FROM cart,'
-        'JOIN products on cart.product_id = products.id,'
+        'FROM cart '
+        'JOIN products on cart.product_id = products.id '
         'WHERE cart.user_id = ?',
         [userId]);
     return rowsMap.map((rowsMap) => Cart.fromMap(rowsMap)).toList();
@@ -37,5 +38,9 @@ class CartDbController extends DbOperation<Cart> {
       where: 'user_id = ? AND id = ?',
       whereArgs: [userId,model.id],
     );
+  }
+
+  Future<bool> clear() async {
+    return await database.delete(Cart.tableName) > 0;
   }
 }

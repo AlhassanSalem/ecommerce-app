@@ -126,7 +126,7 @@ class CartCard extends StatelessWidget {
   }
 
   void deleteItemFromCartById(BuildContext context,int id) async {
-    ProcessResponse response = await Provider.of<CartProvider>(context,listen: false).delete(cart.id);
+    ProcessResponse response = await Provider.of<CartProvider>(context,listen: false).delete(id);
     context.showSnakBar(message: response.message, success: response.success);
   }
 

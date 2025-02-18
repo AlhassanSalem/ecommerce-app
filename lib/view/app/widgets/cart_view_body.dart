@@ -27,7 +27,7 @@ class _CartViewBodyState extends State<CartViewBody> {
         title: const Text('My Cart'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => clearCart(),
             icon: const Icon(Icons.delete),
           ),
         ],
@@ -54,5 +54,9 @@ class _CartViewBodyState extends State<CartViewBody> {
         },
       ),
     );
+  }
+
+  void clearCart(){
+    Provider.of<CartProvider>(context,listen: false).clear();
   }
 }

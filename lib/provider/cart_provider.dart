@@ -10,7 +10,7 @@ class CartProvider extends ChangeNotifier {
   List<Cart> get cartItem => _cartItems;
 
   Future<ProcessResponse> create(Cart model) async {
-    int index = _cartItems.indexWhere((item) => item.id == model.id && item.productId == model.productId);
+    int index = _cartItems.indexWhere((item) => item.productId == model.productId);
     bool isNotExist =  index== -1;
     if(isNotExist){
       int newRowId = await _controller.create(model);
@@ -59,6 +59,14 @@ class CartProvider extends ChangeNotifier {
     return getResponse(isDeleted);
   }
 
+  void clear() async{
+    bool isCleared = await _controller.clear();
+    if(isCleared){
+      _cartItems.clear();
+      notifyListeners();
+    }
+  }
+
   ProcessResponse getResponse(bool successCondition) {
     return ProcessResponse(
       message: successCondition ? 'Operation Successfully' : 'Operation Failed',
@@ -66,4 +74,6 @@ class CartProvider extends ChangeNotifier {
 
     );
   }
+
+
 }
